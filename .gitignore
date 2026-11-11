@@ -1,0 +1,24 @@
+
+# Environment variables (rahasia)
+.env
+.env.*
+!.env.example
+
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Dependencies
+frontend/node_modules/
+backend/vendor/
+
+# Log files
+*.log
+
+# Operating system
+.DS_Store
+Thumbs.db
