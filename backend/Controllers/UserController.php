@@ -24,11 +24,13 @@ class UserController
 
         $name = $data['name'] ?? null;
         $phone = $data['phone'] ?? null;
+        $password = $data['password'] ?? null;
         $profilePicture = $data['profile_picture'] ?? null;
 
         if (
             !is_string($name) || trim($name) === ''
             || !is_string($phone) || trim($phone) === ''
+            || !is_string($password) || strlen($password) < 8
             || !is_string($profilePicture)
         ) {
             responseJson(
@@ -37,11 +39,40 @@ class UserController
             );
         }
 
-        $id = User::create([
-            'name' => trim($name),
-            'phone' => trim($phone),
-            'profile_picture' => $profilePicture,
-        ]);
+        if (!preg_match('/^\+?[0-9]{10,15}$/', trim($phone))) {
+            responseJson(
+                statusCode: 422,
+                message: 'Phone number must contain 10-15 digits'
+            );
+        }
+        
+        $id = '';
+
+        try {
+            $id = User::create([
+                'name' => trim($name),
+                'phone' => trim($phone),
+                'password_hash' => password_hash($password, PASSWORD_DEFAULT),
+                'profile_picture' => $profilePicture,
+            ]);
+        } catch (\PDOException $e) {
+            if (
+                isset($e->errorInfo[1])
+                && (int) $e->errorInfo[1] === 1062
+            ) {
+                responseJson(
+                    statusCode: 409,
+                    message: 'Phone number already registered'
+                );
+            }
+
+            error_log($e->getMessage());
+
+            responseJson(
+                statusCode: 500,
+                message: 'Internal server error'
+            );
+        }
 
         responseJson(
             data: ['id' => $id],

@@ -12,11 +12,12 @@ if (is_file($envPath)) {
     \Lib\loadEnv($envPath);
 }
 
-spl_autoload_register(static function (string $class): void {
+spl_autoload_register(static function (string $class): void { 
     $prefixes = [
-        'Controllers\\' => dirname(__DIR__) . '/controllers/',
+        'Controllers\\' => dirname(__DIR__) . '/Controllers/',
         'Lib\\' => dirname(__DIR__) . '/lib/',
         'Models\\' => dirname(__DIR__) . '/models/',
+        'Firebase\\JWT\\' => dirname(__DIR__) . '/lib/php-jwt/src/',
     ];
 
     foreach ($prefixes as $prefix => $directory) {
