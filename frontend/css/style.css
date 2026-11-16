@@ -1,0 +1,690 @@
+/* =================================
+   1. RESET DAN PENGATURAN DASAR
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf0f8;
+    color: #1e293b;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =================================
+   2. CONTAINER UTAMA
+================================= */
+
+.chat-container {
+    width: 95%;
+    max-width: 1400px;
+    height: 90vh;
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =================================
+   3. SIDEBAR
+================================= */
+
+.sidebar {
+    width: 350px;
+    min-width: 300px;
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 24px;
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.sidebar-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#addContactButton {
+    margin-top: 15px;
+    padding: 9px 12px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 7px;
+    background-color: #ffffff;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#addContactButton:hover {
+    background-color: #dbeafe;
+}
+
+
+/* =================================
+   4. PENCARIAN KONTAK
+================================= */
+
+.search-container {
+    padding: 18px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    font-size: 14px;
+}
+
+
+/* =================================
+   5. DAFTAR KONTAK
+================================= */
+
+.contact-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+
+/* =================================
+   6. AREA CHAT
+================================= */
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8fafc;
+    min-width: 0;
+}
+
+
+/* =================================
+   7. HEADER CHAT
+================================= */
+
+.chat-header {
+    min-height: 85px;
+    padding: 20px 25px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+}
+
+.empty-chat {
+    text-align: center;
+    width: 100%;
+}
+
+.empty-chat h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #2563eb;
+}
+
+.empty-chat p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+
+/* =================================
+   8. DAFTAR PESAN
+================================= */
+
+.message-container {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+
+/* =================================
+   9. FORM KIRIM PESAN
+================================= */
+
+.message-form {
+    display: flex;
+    gap: 12px;
+    padding: 18px 25px;
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+}
+
+.message-form input {
+    flex: 1;
+    padding: 13px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.message-form input:focus {
+    border-color: #2563eb;
+}
+
+.message-form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* =================================
+   10. RESPONSIVE DESIGN
+================================= */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        align-items: stretch;
+    }
+
+    .chat-container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .sidebar {
+        width: 110px;
+        min-width: 110px;
+    }
+
+    .sidebar-header {
+        padding: 20px 10px;
+        text-align: center;
+    }
+
+    .sidebar-header h1 {
+        font-size: 18px;
+    }
+
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-container input {
+        padding: 10px 5px;
+        font-size: 11px;
+    }
+
+    .chat-header {
+        padding: 15px;
+    }
+
+    .message-container {
+        padding: 15px;
+    }
+
+    .message-form {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .message-form button {
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .sidebar {
+        width: 95px;
+        min-width: 95px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 16px;
+    }
+
+    .message-form button {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+
+/* =================================
+   11. DAFTAR KONTAK
+================================= */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 16px 18px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.2s ease;
+}
+
+.contact-item:hover {
+    background-color: #f1f5f9;
+}
+
+/* Avatar Kontak */
+
+.contact-avatar {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Variasi Warna Avatar */
+
+.avatar-blue {
+    background-color: #3b82f6;
+}
+
+.avatar-purple {
+    background-color: #8b5cf6;
+}
+
+.avatar-green {
+    background-color: #10b981;
+}
+
+.avatar-orange {
+    background-color: #f59e0b;
+}
+
+/* Informasi Kontak */
+
+.contact-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.contact-top h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.contact-time {
+    font-size: 11px;
+    color: #94a3b8;
+    white-space: nowrap;
+}
+
+.contact-info p {
+    font-size: 12px;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Kontak yang Dipilih */
+
+.contact-item.active {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+}
+
+.contact-item.active .contact-top h3 {
+    color: #2563eb;
+}
+
+
+/* =================================
+   12. HEADER KONTAK TERPILIH
+================================= */
+
+.selected-contact {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.selected-contact .contact-avatar {
+    width: 48px;
+    height: 48px;
+}
+
+.selected-info h3 {
+    font-size: 16px;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.selected-info p {
+    font-size: 12px;
+    color: #10b981;
+}
+
+.empty-message {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+
+/* =================================
+   13. BUBBLE PESAN
+================================= */
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Bubble Pesan */
+
+.message-bubble {
+    max-width: 65%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* Pesan dari Kontak */
+
+.message-bubble.them {
+    align-self: flex-start;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-top-left-radius: 3px;
+}
+
+/* Pesan dari Pengguna */
+
+.message-bubble.me {
+    align-self: flex-end;
+    background-color: #2563eb;
+    color: #ffffff;
+    border-top-right-radius: 3px;
+}
+
+/* Isi Pesan */
+
+.message-bubble p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Waktu Pesan */
+
+.message-bubble span {
+    font-size: 10px;
+    text-align: right;
+    opacity: 0.7;
+}
+
+/* =================================
+   14. TOMBOL HAPUS PESAN
+================================= */
+
+/* =================================
+   14. TOMBOL HAPUS PESAN
+================================= */
+.delete-message {
+    align-self: flex-end;
+    border: none;
+    background-color: transparent;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 6px;
+    cursor: pointer;
+    border-radius: 5px;
+
+    /* Tombol disembunyikan */
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.2s ease;
+}
+
+/* Tombol muncul ketika bubble diarahkan kursor */
+
+.message-bubble:hover .delete-message,
+.message-bubble:focus-within .delete-message {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Efek ketika tombol diarahkan kursor */
+
+.delete-message:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.edit-message {
+    align-self: flex-end;
+    border: none;
+    background-color: transparent;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 6px;
+    cursor: pointer;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.message-bubble:hover .edit-message,
+.message-bubble:focus-within .edit-message {
+    opacity: 1;
+    visibility: visible;
+}
+
+.edit-message:hover {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+/* Perbaikan posisi tombol Edit dan Hapus */
+
+.message-bubble.me {
+    position: relative;
+}
+
+.message-bubble.me .edit-message,
+.message-bubble.me .delete-message {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 5px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.message-bubble.me .edit-message {
+    right: 55px;
+    color: #2563eb;
+}
+
+.message-bubble.me .delete-message {
+    right: 0;
+    color: #dc2626;
+}
+
+.message-bubble.me:hover .edit-message,
+.message-bubble.me:hover .delete-message,
+.message-bubble.me:focus-within .edit-message,
+.message-bubble.me:focus-within .delete-message {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =================================
+   15. MODAL TAMBAH KONTAK
+================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h2 {
+    margin-bottom: 22px;
+    color: #1e293b;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cancelContact {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+#saveContact {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+#saveContact:hover {
+    background-color: #1d4ed8;
+}
+
+.delete-contact {
+    border: none;
+    background-color: transparent;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 6px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.delete-contact:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.edit-contact {
+    border: none;
+    background-color: transparent;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 6px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.edit-contact:hover {
+    background-color: #dbeafe;
+    color: #2563eb;
+}

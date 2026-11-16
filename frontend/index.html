@@ -1,11 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Chatly - Chat without limits</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    asd
+
+    <!-- Container Utama -->
+    <div class="chat-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <!-- Header Sidebar -->
+            <div class="sidebar-header">
+                <h1>Chatly</h1>
+                <button id="addContactButton" type="button">
+                    + Tambah Kontak
+                </button>
+            </div>
+
+            <!-- Pencarian -->
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchContact"
+                    placeholder="Cari kontak..."
+                >
+            </div>
+
+            <!-- Daftar Kontak -->           
+            <div class="contact-list" id="contactList">
+
+                <!-- Kontak 1 -->
+                <div class="contact-item">
+                    <div class="contact-avatar avatar-blue">
+                        A
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-top">
+                            <h3>Arsha</h3>
+                            <span class="contact-time">10:30</span>
+                        </div>
+
+                        <p>Hai, apa kabar?</p>
+                    </div>
+
+                    <button class="edit-contact" type="button">
+                        Edit
+                    </button>
+
+                    <button class="delete-contact" type="button">
+                        Hapus
+                    </button>
+                </div>
+
+                <!-- Kontak 2 -->
+                <div class="contact-item">
+                    <div class="contact-avatar avatar-purple">
+                        N
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-top">
+                            <h3>Najwa</h3>
+                            <span class="contact-time">09:45</span>
+                        </div>
+
+                        <p>Jangan lupa tugasnya ya!</p>
+                    </div>
+
+                    <button class="edit-contact" type="button">
+                        Edit
+                    </button>
+
+                    <button class="delete-contact" type="button">
+                        Hapus
+                    </button>
+                </div>
+
+                <!-- Kontak 3 -->
+                <div class="contact-item">
+                    <div class="contact-avatar avatar-green">
+                        T
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-top">
+                            <h3>Tika</h3>
+                            <span class="contact-time">Kemarin</span>
+                        </div>
+
+                        <p>Oke, terima kasih.</p>
+                    </div>
+
+                    <button class="edit-contact" type="button">
+                        Edit
+                    </button>
+
+                    <button class="delete-contact" type="button">
+                        Hapus
+                    </button>
+                </div>
+
+                <!-- Kontak 4 -->
+                <div class="contact-item">
+                    <div class="contact-avatar avatar-orange">
+                        S
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-top">
+                            <h3>Sela</h3>
+                            <span class="contact-time">Kemarin</span>
+                        </div>
+
+                        <p>Sampai ketemu besok!</p>
+                    </div>
+
+                    <button class="edit-contact" type="button">
+                        Edit
+                    </button>
+
+                    <button class="delete-contact" type="button">
+                        Hapus
+                    </button>
+                </div>
+
+            </div>
+
+
+        </aside>
+
+        <!-- Area Chat -->
+        <main class="chat-area">
+
+            <!-- Header Chat -->
+            <header class="chat-header" id="chatHeader">
+
+                <div class="empty-chat">
+                    <h2>Selamat Datang di Chatly</h2>
+                    <p>Pilih kontak untuk mulai percakapan.</p>
+                </div>
+
+            </header>
+
+            <!-- Daftar Pesan -->
+            <div class="message-container" id="messageContainer">
+
+                <!-- Pesan akan ditampilkan di sini -->
+
+            </div>
+
+            <!-- Form Kirim Pesan -->
+            <form class="message-form" id="messageForm">
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Ketik pesan..."
+                >
+            
+                <button type="submit">Kirim</button>
+            </form>
+
+        </main>
+
+    </div>
+
+    <!-- Modal Tambah Kontak -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2>Tambah Kontak</h2>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Nama Kontak</label>
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Masukkan nama kontak"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="contactPhone">Nomor Telepon</label>
+                    <input
+                        type="tel"
+                        id="contactPhone"
+                        placeholder="Contoh: 081234567890"
+                        required
+                    >
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelContact">Batal</button>
+                    <button type="submit" id="saveContact">Simpan Kontak</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
 </body>
 </html>
